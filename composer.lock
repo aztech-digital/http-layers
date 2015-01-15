@@ -4,20 +4,20 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "cef21c65842b64ca50a0fd151bf5ac3c",
+    "hash": "f91b70d57c664e976680e29811dd5f5d",
     "packages": [
         {
             "name": "aztech/phinject",
-            "version": "dev-master",
+            "version": "0.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aztech-digital/phinject.git",
-                "reference": "fc02d7133e38a243d494ac06582d099f06d68e70"
+                "reference": "fea34f5160dd45aa7edb1aff2a004275bfaeba9a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aztech-digital/phinject/zipball/fc02d7133e38a243d494ac06582d099f06d68e70",
-                "reference": "fc02d7133e38a243d494ac06582d099f06d68e70",
+                "url": "https://api.github.com/repos/aztech-digital/phinject/zipball/fea34f5160dd45aa7edb1aff2a004275bfaeba9a",
+                "reference": "fea34f5160dd45aa7edb1aff2a004275bfaeba9a",
                 "shasum": ""
             },
             "require": {
@@ -71,7 +71,7 @@
             ],
             "description": "PHP Dependency Injection Container",
             "homepage": "http://github.com/aztech-dev/phinject",
-            "time": "2014-12-27 13:40:49"
+            "time": "2014-12-26 00:00:00"
         },
         {
             "name": "aztech/php-utils",
@@ -2249,9 +2249,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "aztech/phinject": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
