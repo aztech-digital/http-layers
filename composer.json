@@ -1,0 +1,30 @@
+{
+	"name" : "aztech/layers",
+	"description" : "Stackable HTTP layers",
+	"require" : {
+		"aztech/phinject" : "dev-master",
+		"aztech/php-utils" : "~1.0",
+		"league/fractal" : "~0.10",
+		"rhumsaa/uuid" : "~2.8",
+		"silex/silex" : "~1.2",
+		"twig/twig" : "~1.16"
+	},
+	"license" : "MIT",
+	"authors" : [{
+			"name" : "Thibaud Fabre",
+			"email" : "thibaud@aztech.io"
+		}
+	],
+	"minimum-stability" : "stable",
+	"autoload" : {
+		"psr-4" : {
+			"Aztech\\Layers\\" : "src"
+		}
+	},
+	"require-dev" : {
+		"vektah/bugfree-dangerzone" : "0.3.*",
+		"phpmd/phpmd" : "~2.1",
+		"phpunit/phpunit" : "~4.4",
+		"squizlabs/php_codesniffer" : "~2.1"
+	}
+}
