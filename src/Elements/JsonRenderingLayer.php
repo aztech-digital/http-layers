@@ -5,6 +5,7 @@ namespace Aztech\Layers\Elements;
 use Aztech\Layers\Responses\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class JsonRenderingLayer
 {
@@ -22,7 +23,13 @@ class JsonRenderingLayer
         }
 
         $callable = $this->callable;
-        $response = $callable($request);
+
+        try {
+            $response = $callable($request);
+        }
+        catch (HttpException $exception) {
+            $response = new JsonResponse($exception->getMessage(), $exception->getStatusCode());
+        }
 
         if ($response instanceof Response) {
             return (new JsonResponse($response->getContent(), $response->getStatusCode()))->getResponse();
