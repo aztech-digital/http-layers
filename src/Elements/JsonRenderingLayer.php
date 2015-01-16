@@ -28,7 +28,11 @@ class JsonRenderingLayer
             $response = $callable($request);
         }
         catch (HttpException $exception) {
-            $response = new JsonResponse($exception->getMessage(), $exception->getStatusCode());
+            $response = new JsonResponse([
+                'success' => false,
+                'message' => $exception->getMessage()
+            ],
+            $exception->getStatusCode());
         }
 
         if ($response instanceof Response) {
