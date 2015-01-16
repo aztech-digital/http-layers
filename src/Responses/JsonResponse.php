@@ -8,9 +8,13 @@ class JsonResponse
 {
     private $response;
 
-    public function __construct(array $content, $code)
+    public function __construct($content, $code)
     {
-        $this->response = new Response(json_encode($content), intval($code), [
+        if (! is_string($content)) {
+            json_encode($content);
+        }
+
+        $this->response = new Response($content, intval($code), [
             'Content-Type' => 'application/json'
         ]);
     }
