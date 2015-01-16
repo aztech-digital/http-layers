@@ -11,7 +11,7 @@ class JsonResponse
     public function __construct($content, $code)
     {
         if (! is_string($content)) {
-            json_encode($content);
+            $content = json_encode($content);
         }
 
         $this->response = new Response($content, intval($code), [
