@@ -24,7 +24,7 @@ class ErrorHandlingLayer
         catch (\Exception $ex) {
             error_log($ex);
 
-            throw new HttpException(500, 'Caught exception', $ex);
+            throw new HttpException(500, $ex->getMessage());
         }
     }
 }
