@@ -3,6 +3,7 @@
 namespace Aztech\Layers\Elements;
 
 use Aztech\Layers\LayerBuilder;
+use Aztech\Layers\Layer;
 
 class HtmlRenderingLayerBuilder implements LayerBuilder
 {
@@ -21,7 +22,7 @@ class HtmlRenderingLayerBuilder implements LayerBuilder
      *
      * (non-PHPdoc) @see \Aztech\LayerBuilder::buildLayer()
      */
-    public function buildLayer(callable $nextLayer, array $arguments)
+    public function buildLayer(Layer $nextLayer, array $arguments)
     {
         $layer = new HtmlRenderingLayer($nextLayer, $this->twig, $arguments[0]);
         $layer->setBaseUrl($this->baseUrl);

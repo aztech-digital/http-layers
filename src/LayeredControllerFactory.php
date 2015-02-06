@@ -2,7 +2,9 @@
 
 namespace Aztech\Layers;
 
-class LayeredControllerFactory
+use Aztech\Layers\Elements\CallableLayer;
+
+class LayerStackBuilder
 {
     /**
      *
@@ -15,17 +17,21 @@ class LayeredControllerFactory
         $this->builders[$key] = $builder;
     }
 
-    public function build($controller, array $keys)
+    public function build($nextLayer, array $keys)
     {
-        if (! is_callable($controller)) {
+        if (! is_callable($nextLayer) && ! ($nextLayer instanceof Layer)) {
             throw new \InvalidArgumentException('Controller must be a callable.');
+        }
+
+        if (is_callable($nextLayer)) {
+            $nextLayer = new CallableLayer($nextLayer);
         }
 
         foreach ($keys as $keyValue) {
             $key = is_array($keyValue) ? $keyValue[0] : $keyValue;
             $arguments = is_array($keyValue) ? array_slice($keyValue, 1) : [];
 
-            $controller = $this->builders[$key]->buildLayer($controller, $arguments);
+            $controller = $this->builders[$key]->buildLayer($nextLayer, $arguments);
         }
 
         return $controller;

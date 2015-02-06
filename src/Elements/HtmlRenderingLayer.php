@@ -4,8 +4,9 @@ namespace Aztech\Layers\Elements;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Aztech\Layers\Layer;
 
-class HtmlRenderingLayer
+class HtmlRenderingLayer implements Layer
 {
     private $callable;
 
@@ -17,7 +18,7 @@ class HtmlRenderingLayer
 
     private $baseUrl;
 
-    public function __construct(callable $callable, \Twig_Environment $twig, $template)
+    public function __construct(Layer $callable, \Twig_Environment $twig, $template)
     {
         $this->callable = $callable;
         $this->template = $template;

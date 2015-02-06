@@ -4,12 +4,13 @@ namespace Aztech\Layers\Elements;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\HttpException;
+use Aztech\Layers\Layer;
 
-class ErrorHandlingLayer
+class ErrorHandlingLayer implements Layer
 {
     private $controller;
 
-    public function __construct(callable $controller)
+    public function __construct(Layer $controller)
     {
         $this->controller = $controller;
     }

@@ -9,8 +9,9 @@ use League\Fractal\Manager;
 use League\Fractal\Resource\Collection;
 use League\Fractal\Resource\Item;
 use Symfony\Component\HttpFoundation\Request;
+use Aztech\Layers\Layer;
 
-class FractalRenderingLayer
+class FractalRenderingLayer implements Layer
 {
 
     private $controller;
@@ -21,7 +22,7 @@ class FractalRenderingLayer
 
     private $manager;
 
-    public function __construct(Container $container, Manager $manager, callable $controller, $transformer, $isList)
+    public function __construct(Container $container, Manager $manager, Layer $controller, $transformer, $isList)
     {
         $this->controller = $controller;
         $this->isList = $isList;

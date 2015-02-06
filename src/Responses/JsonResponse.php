@@ -4,7 +4,7 @@ namespace Aztech\Layers\Responses;
 
 use Symfony\Component\HttpFoundation\Response;
 
-class JsonResponse
+class JsonResponse extends Response
 {
     private $response;
 
@@ -14,13 +14,8 @@ class JsonResponse
             $content = json_encode($content);
         }
 
-        $this->response = new Response($content, intval($code), [
+        parent::__construct($content, intval($code), [
             'Content-Type' => 'application/json'
         ]);
-    }
-
-    public function getResponse()
-    {
-        return $this->response;
     }
 }

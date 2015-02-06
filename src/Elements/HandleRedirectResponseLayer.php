@@ -4,13 +4,14 @@ namespace Aztech\Layers\Elements;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Aztech\Layers\Layer;
 
-class HandleRedirectResponseLayer
+class HandleRedirectResponseLayer implements Layer
 {
 
     private $callable;
 
-    public function __construct($callable)
+    public function __construct(Layer $callable)
     {
         $this->callable = $callable;
     }
