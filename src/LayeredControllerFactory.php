@@ -4,7 +4,7 @@ namespace Aztech\Layers;
 
 use Aztech\Layers\Elements\CallableLayer;
 
-class LayerStackBuilder
+class LayeredControllerFactory
 {
     /**
      *
