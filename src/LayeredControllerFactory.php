@@ -10,7 +10,7 @@ class LayeredControllerFactory
      *
      * @var LayerBuilder[]
      */
-    private $builders;
+    private $builders = [];
 
     public function addBuilder($key, LayerBuilder $builder)
     {
