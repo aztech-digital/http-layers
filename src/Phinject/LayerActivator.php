@@ -49,10 +49,14 @@ class LayerActivator implements Activator, ConfigurationAware
             ->extract();
 
         for ($i = 0; $i < count($sequence); $i++) {
-            $sequence[$i] = [
-                $sequence[$i],
-                $serviceConfig->resolve($this->activatorKey . '.' . $sequence[$i], [], true)
-            ];
+            $sequence[$i] = array_merge(
+                [
+                    $sequence[$i]
+                ],
+                array_values(
+                    $serviceConfig->resolve($this->activatorKey . '.' . $sequence[$i], [], true)->extract()
+                )
+            );
         }
 
         $nextLayerConfig = $serviceConfig->resolveStrict($this->activatorKey . '.handler');
