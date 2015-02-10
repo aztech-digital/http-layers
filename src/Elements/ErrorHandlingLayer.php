@@ -21,8 +21,7 @@ class ErrorHandlingLayer implements Layer
             $controller = $this->controller;
 
             return $controller($request);
-        }
-        catch (\Exception $ex) {
+        } catch (\Exception $ex) {
             error_log($ex);
 
             throw new HttpException(500, $ex->getMessage());

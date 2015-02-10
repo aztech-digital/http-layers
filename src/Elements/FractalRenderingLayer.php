@@ -32,8 +32,7 @@ class FractalRenderingLayer implements Layer
         if (class_exists($this->transformer, true)) {
             $transformerClass = $this->transformer;
             $this->transformer = new $transformerClass();
-        }
-        else {
+        } else {
             $this->transformer = $container->resolve($this->transformer);
         }
     }
@@ -49,8 +48,7 @@ class FractalRenderingLayer implements Layer
             if ($data instanceof PaginatedResult) {
                 $resource->setPaginator(new PaginatedResultAdapter($data));
             }
-        }
-        else {
+        } else {
             $resource = new Item($data, $this->transformer);
         }
 

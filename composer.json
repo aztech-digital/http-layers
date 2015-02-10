@@ -2,7 +2,7 @@
     "name": "aztech/layers",
     "description": "Stackable HTTP layers",
     "require": {
-        "aztech/phinject": "~0.1",
+        "aztech/phinject": "~0.2.5",
         "aztech/php-utils": "~1.0",
         "league/fractal": "~0.10",
         "rhumsaa/uuid": "~2.8",

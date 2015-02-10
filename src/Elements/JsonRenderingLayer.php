@@ -27,8 +27,7 @@ class JsonRenderingLayer implements Layer
 
         try {
             $response = $callable($request);
-        }
-        catch (HttpException $exception) {
+        } catch (HttpException $exception) {
             return new JsonResponse([
                 'success' => false,
                 'message' => $exception->getMessage()

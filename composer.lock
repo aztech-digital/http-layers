@@ -4,24 +4,26 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f12c17338e0be74acee4c8d51707b392",
+    "hash": "6c87737882ed1e1e26e61b6a2e75d2f6",
     "packages": [
         {
             "name": "aztech/phinject",
-            "version": "0.1.0",
+            "version": "0.2.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aztech-digital/phinject.git",
-                "reference": "b868cecd643366878f332e22a38ff1cf658ad833"
+                "reference": "0225c4814baf31c1bc4133170bb4e84c93b3059b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aztech-digital/phinject/zipball/b868cecd643366878f332e22a38ff1cf658ad833",
-                "reference": "b868cecd643366878f332e22a38ff1cf658ad833",
+                "url": "https://api.github.com/repos/aztech-digital/phinject/zipball/0225c4814baf31c1bc4133170bb4e84c93b3059b",
+                "reference": "0225c4814baf31c1bc4133170bb4e84c93b3059b",
                 "shasum": ""
             },
             "require": {
+                "container-interop/container-interop": "~1.1",
                 "psr/log": "~1.0",
+                "symfony/console": "~2.6",
                 "symfony/yaml": "~2.5"
             },
             "require-dev": {
@@ -70,7 +72,17 @@
                 }
             ],
             "description": "PHP Dependency Injection Container",
-            "homepage": "http://github.com/aztech-dev/phinject",
+            "homepage": "http://aztech-digital.github.io/phinject/",
+            "keywords": [
+                "container",
+                "container-interop",
+                "dependency",
+                "dependency-injection",
+                "di",
+                "di-container",
+                "injection",
+                "phinject"
+            ],
             "time": "2014-12-26 00:00:00"
         },
         {
@@ -119,6 +131,33 @@
             "description": "PHP Utility classes",
             "homepage": "http://www.aztech.io",
             "time": "2013-11-01 00:00:00"
+        },
+        {
+            "name": "container-interop/container-interop",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/container-interop/container-interop.git",
+                "reference": "fc08354828f8fd3245f77a66b9e23a6bca48297e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/container-interop/container-interop/zipball/fc08354828f8fd3245f77a66b9e23a6bca48297e",
+                "reference": "fc08354828f8fd3245f77a66b9e23a6bca48297e",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Interop\\Container\\": "src/Interop/Container/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Promoting the interoperability of container objects (DIC, SL, etc.)",
+            "time": "2014-12-30 15:22:37"
         },
         {
             "name": "league/fractal",
@@ -414,6 +453,63 @@
                 "microframework"
             ],
             "time": "2015-01-20 16:45:58"
+        },
+        {
+            "name": "symfony/console",
+            "version": "v2.6.4",
+            "target-dir": "Symfony/Component/Console",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/Console.git",
+                "reference": "e44154bfe3e41e8267d7a3794cd9da9a51cfac34"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/Console/zipball/e44154bfe3e41e8267d7a3794cd9da9a51cfac34",
+                "reference": "e44154bfe3e41e8267d7a3794cd9da9a51cfac34",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "psr/log": "~1.0",
+                "symfony/event-dispatcher": "~2.1",
+                "symfony/process": "~2.1"
+            },
+            "suggest": {
+                "psr/log": "For using the console logger",
+                "symfony/event-dispatcher": "",
+                "symfony/process": ""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.6-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\Console\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                },
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "Symfony Console Component",
+            "homepage": "http://symfony.com",
+            "time": "2015-01-25 04:39:26"
         },
         {
             "name": "symfony/debug",
@@ -2171,63 +2267,6 @@
             "description": "Symfony Config Component",
             "homepage": "http://symfony.com",
             "time": "2015-01-21 20:57:55"
-        },
-        {
-            "name": "symfony/console",
-            "version": "v2.6.4",
-            "target-dir": "Symfony/Component/Console",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/Console.git",
-                "reference": "e44154bfe3e41e8267d7a3794cd9da9a51cfac34"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Console/zipball/e44154bfe3e41e8267d7a3794cd9da9a51cfac34",
-                "reference": "e44154bfe3e41e8267d7a3794cd9da9a51cfac34",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.3"
-            },
-            "require-dev": {
-                "psr/log": "~1.0",
-                "symfony/event-dispatcher": "~2.1",
-                "symfony/process": "~2.1"
-            },
-            "suggest": {
-                "psr/log": "For using the console logger",
-                "symfony/event-dispatcher": "",
-                "symfony/process": ""
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.6-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Symfony\\Component\\Console\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Symfony Community",
-                    "homepage": "http://symfony.com/contributors"
-                },
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                }
-            ],
-            "description": "Symfony Console Component",
-            "homepage": "http://symfony.com",
-            "time": "2015-01-25 04:39:26"
         },
         {
             "name": "symfony/dependency-injection",

@@ -47,8 +47,7 @@ class NegotiatedContentLayer implements Layer
 
         if ($format == 'html' && $this->htmlRenderer) {
             $renderer = $this->htmlRenderer;
-        }
-        elseif ($format == 'application/json' && $this->jsonRenderer) {
+        } elseif ($format == 'application/json' && $this->jsonRenderer) {
             $renderer = $this->jsonRenderer;
         }
 
