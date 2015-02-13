@@ -12,6 +12,7 @@ use Aztech\Layers\Elements\HtmlRenderingLayer;
 use Aztech\Layers\Elements\HtmlRenderingLayerBuilder;
 use Aztech\Layers\Elements\FractalRenderingLayerBuilder;
 use Aztech\Layers\Elements\JsonRenderingLayerBuilder;
+use Aztech\Layers\Elements\RedirectLayerBuilder;
 
 class LayerActivator implements Activator, ConfigurationAware
 {
@@ -53,14 +54,16 @@ class LayerActivator implements Activator, ConfigurationAware
                 [
                     $sequence[$i]
                 ],
-                array_values(
-                    $serviceConfig->resolve($this->activatorKey . '.' . $sequence[$i], [], true)->extract()
-                )
+                $serviceConfig->resolve($this->activatorKey . '.' . $sequence[$i], [], true)->extract()
             );
         }
 
-        $nextLayerConfig = $serviceConfig->resolveStrict($this->activatorKey . '.handler');
-        $nextLayer = $container->resolve($nextLayerConfig);
+        $nextLayerConfig = $serviceConfig->resolve($this->activatorKey . '.handler', null);
+        $nextLayer = null;
+
+        if ($nextLayerConfig !== null) {
+            $nextLayer = $container->resolve($nextLayerConfig);
+        }
 
         return $this->layerBuilder->build($nextLayer, $sequence);
     }
@@ -71,18 +74,24 @@ class LayerActivator implements Activator, ConfigurationAware
 
         $this->initializeHtml($container);
         $this->initializeJson($container);
+        $this->initializeRedirect($container);
     }
 
     private function initializeHtml(Container $container)
     {
         $baseUrl = $container->resolve($this->config->resolveStrict('defaults.html.baseUrl'));
         $templatePath = $container->resolve($this->config->resolveStrict('defaults.html.templates'));
-        $inflectors = $container->resolveMany($this->config->resolveArray('inflectors'));
+        $inflectors = $container->resolveMany($this->config->resolveArray('defaults.html.inflectors')->extract());
 
         $twigLoader = new \Twig_Loader_Filesystem($templatePath);
         $twig = new \Twig_Environment($twigLoader);
 
         $this->layerBuilder->addBuilder('html', new HtmlRenderingLayerBuilder($twig, $baseUrl, $inflectors));
+    }
+
+    private function initializeRedirect(Container $container)
+    {
+        $this->layerBuilder->addBuilder('redirect', new RedirectLayerBuilder($container));
     }
 
     private function initializeJson(Container $container)

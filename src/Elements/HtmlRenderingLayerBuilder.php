@@ -13,7 +13,7 @@ class HtmlRenderingLayerBuilder implements LayerBuilder
 
     private $baseUrl;
 
-    private $inflectors;
+    private $inflectors = [];
 
     public function __construct(\Twig_Environment $twig, $baseUrl, array $inflectors = [])
     {
@@ -36,7 +36,7 @@ class HtmlRenderingLayerBuilder implements LayerBuilder
      */
     public function buildLayer(Layer $nextLayer, array $arguments)
     {
-        $layer = new HtmlRenderingLayer($nextLayer, $this->twig, $arguments[0]);
+        $layer = new HtmlRenderingLayer($nextLayer, $this->twig, reset($arguments));
         $layer->setBaseUrl($this->baseUrl);
         $layer->addInflectors($this->inflectors);
 

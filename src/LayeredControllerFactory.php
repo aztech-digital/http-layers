@@ -3,6 +3,7 @@
 namespace Aztech\Layers;
 
 use Aztech\Layers\Elements\CallableLayer;
+use Aztech\Layers\Elements\NullLayer;
 
 class LayeredControllerFactory
 {
@@ -19,21 +20,37 @@ class LayeredControllerFactory
 
     public function build($nextLayer, array $keys)
     {
-        if (! is_callable($nextLayer) && ! ($nextLayer instanceof Layer)) {
+        if (! $this->isValidLayer($nextLayer)) {
             throw new \InvalidArgumentException('Controller must be a callable.');
         }
 
-        if (is_callable($nextLayer)) {
-            $nextLayer = new CallableLayer($nextLayer);
-        }
+        $nextLayer = $this->wrapLayerIfNecessary($nextLayer);
 
         foreach ($keys as $keyValue) {
-            $key = is_array($keyValue) ? $keyValue[0] : $keyValue;
-            $arguments = is_array($keyValue) ? array_slice($keyValue, 1) : [];
+            $key = is_array($keyValue) ? reset($keyValue) : $keyValue;
+            $arguments = is_array($keyValue) ? array_slice($keyValue, 1, count($keyValue) - 1, true) : [];
 
             $controller = $this->builders[$key]->buildLayer($nextLayer, $arguments);
         }
 
         return $controller;
+    }
+
+    private function isValidLayer($layer)
+    {
+        return ! ($layer != null && ! is_callable($layer) && ! ($layer instanceof Layer));
+    }
+
+    private function wrapLayerIfNecessary($layer)
+    {
+        if ($layer == null) {
+            $layer = new NullLayer();
+        }
+
+        if (is_callable($layer) && ! ($layer instanceof Layer)) {
+            $layer = new CallableLayer($layer);
+        }
+
+        return $layer;
     }
 }
