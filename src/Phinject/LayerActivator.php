@@ -75,6 +75,7 @@ class LayerActivator implements Activator, ConfigurationAware
         $this->initializeHtml($container);
         $this->initializeJson($container);
         $this->initializeRedirect($container);
+        $this->initializeCustomLayers($container);
     }
 
     private function initializeHtml(Container $container)
@@ -104,5 +105,18 @@ class LayerActivator implements Activator, ConfigurationAware
         }
 
         $this->layerBuilder->addBuilder('json', new JsonRenderingLayerBuilder($transformationEngine));
+    }
+
+    private function initializeCustomLayers(Container $container)
+    {
+        $customBuilders = $this->config->resolveArray('custom', []);
+
+        foreach ($customBuilders as $name => $builderConfig) {
+            if ($builderConfig instanceof ArrayResolver) {
+                $builderConfig = $builderConfig->extract();
+            }
+
+            $this->layerBuilder->addBuilder($name, $container->resolve($builderConfig));
+        }
     }
 }
