@@ -24,13 +24,15 @@ class LayeredControllerFactory
             throw new \InvalidArgumentException('Controller must be a callable.');
         }
 
-        $nextLayer = $this->wrapLayerIfNecessary($nextLayer);
+        $controller = $this->wrapLayerIfNecessary($nextLayer);
+
+        $keys = array_reverse($keys);
 
         foreach ($keys as $keyValue) {
             $key = is_array($keyValue) ? reset($keyValue) : $keyValue;
             $arguments = is_array($keyValue) ? array_slice($keyValue, 1, count($keyValue) - 1, true) : [];
 
-            $controller = $this->builders[$key]->buildLayer($nextLayer, $arguments);
+            $controller = $this->builders[$key]->buildLayer($controller, $arguments);
         }
 
         return $controller;
