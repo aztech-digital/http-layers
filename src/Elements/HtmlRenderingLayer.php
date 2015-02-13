@@ -5,6 +5,7 @@ namespace Aztech\Layers\Elements;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Aztech\Layers\Layer;
+use Aztech\Layers\LayerDataInflector;
 
 class HtmlRenderingLayer implements Layer
 {
@@ -18,6 +19,8 @@ class HtmlRenderingLayer implements Layer
 
     private $baseUrl;
 
+    private $inflectors = [];
+
     public function __construct(Layer $callable, \Twig_Environment $twig, $template)
     {
         $this->callable = $callable;
@@ -29,6 +32,18 @@ class HtmlRenderingLayer implements Layer
     public function setBaseUrl($url)
     {
         $this->baseUrl = $url;
+    }
+
+    public function addInflectors(array $inflectors)
+    {
+        foreach ($inflectors as $inflector) {
+            $this->addInflector($inflector);
+        }
+    }
+
+    public function addInflector(LayerDataInflector $inflector)
+    {
+        $this->inflectors[] = $inflector;
     }
 
     public function __invoke(Request $request = null)
@@ -49,6 +64,10 @@ class HtmlRenderingLayer implements Layer
         }
 
         $response['baseUrl'] = $this->baseUrl;
+
+        foreach ($this->inflectors as $inflector) {
+            $response = $inflector->inflect($response);
+        }
 
         return $this->twig->render($this->template, $response);
     }

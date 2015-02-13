@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "aztech/phinject",
-            "version": "0.2.5",
+            "version": "0.2.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aztech-digital/phinject.git",
-                "reference": "0225c4814baf31c1bc4133170bb4e84c93b3059b"
+                "reference": "64a3297488f4c904b156562a969cd7a39b89eb99"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aztech-digital/phinject/zipball/0225c4814baf31c1bc4133170bb4e84c93b3059b",
-                "reference": "0225c4814baf31c1bc4133170bb4e84c93b3059b",
+                "url": "https://api.github.com/repos/aztech-digital/phinject/zipball/64a3297488f4c904b156562a969cd7a39b89eb99",
+                "reference": "64a3297488f4c904b156562a969cd7a39b89eb99",
                 "shasum": ""
             },
             "require": {

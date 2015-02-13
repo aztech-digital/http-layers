@@ -4,6 +4,7 @@ namespace Aztech\Layers\Elements;
 
 use Aztech\Layers\LayerBuilder;
 use Aztech\Layers\Layer;
+use Aztech\Layers\LayerDataInflector;
 
 class HtmlRenderingLayerBuilder implements LayerBuilder
 {
@@ -12,10 +13,21 @@ class HtmlRenderingLayerBuilder implements LayerBuilder
 
     private $baseUrl;
 
-    public function __construct(\Twig_Environment $twig, $baseUrl)
+    private $inflectors;
+
+    public function __construct(\Twig_Environment $twig, $baseUrl, array $inflectors = [])
     {
         $this->twig = $twig;
         $this->baseUrl = $baseUrl;
+
+        foreach ($inflectors as $inflector) {
+            $this->addInflector($inflector);
+        }
+    }
+
+    public function addInflector(LayerDataInflector $inflector)
+    {
+        $this->inflectors[] = $inflector;
     }
 
     /**
@@ -26,6 +38,7 @@ class HtmlRenderingLayerBuilder implements LayerBuilder
     {
         $layer = new HtmlRenderingLayer($nextLayer, $this->twig, $arguments[0]);
         $layer->setBaseUrl($this->baseUrl);
+        $layer->addInflectors($this->inflectors);
 
         return $layer;
     }

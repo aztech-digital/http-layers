@@ -77,11 +77,12 @@ class LayerActivator implements Activator, ConfigurationAware
     {
         $baseUrl = $container->resolve($this->config->resolveStrict('defaults.html.baseUrl'));
         $templatePath = $container->resolve($this->config->resolveStrict('defaults.html.templates'));
+        $inflectors = $container->resolveMany($this->config->resolveArray('inflectors'));
 
         $twigLoader = new \Twig_Loader_Filesystem($templatePath);
         $twig = new \Twig_Environment($twigLoader);
 
-        $this->layerBuilder->addBuilder('html', new HtmlRenderingLayerBuilder($twig, $baseUrl));
+        $this->layerBuilder->addBuilder('html', new HtmlRenderingLayerBuilder($twig, $baseUrl, $inflectors));
     }
 
     private function initializeJson(Container $container)
