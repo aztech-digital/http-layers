@@ -25,6 +25,8 @@ class JsonRenderingLayerBuilder implements LayerBuilder
             $nextLayer = $this->transformationLayerBuilder->buildLayer($nextLayer, $arguments);
         }
 
-        return new JsonRenderingLayer($nextLayer);
+        $mergeBody =  isset($arguments['mergeBody']) ? ((bool) $arguments['mergeBody']) : false;
+
+        return new JsonRenderingLayer($nextLayer, $mergeBody);
     }
 }

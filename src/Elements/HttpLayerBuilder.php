@@ -7,6 +7,7 @@ use Aztech\Layers\Layer;
 
 class HttpLayerBuilder implements LayerBuilder
 {
+
     /**
      *
      * (non-PHPdoc) @see \Aztech\LayerBuilder::buildLayer()

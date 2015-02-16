@@ -12,9 +12,12 @@ class JsonRenderingLayer implements Layer
 {
     private $callable;
 
-    public function __construct(Layer $callable)
+    private $mergeBody;
+
+    public function __construct(Layer $callable, $mergeBody)
     {
         $this->callable = $callable;
+        $this->mergeBody = (bool) $mergeBody;
     }
 
     public function __invoke(Request $request = null)
@@ -23,6 +26,26 @@ class JsonRenderingLayer implements Layer
             $request = Request::createFromGlobals();
         }
 
+        if ($this->mergeBody) {
+            $request = $this->mergeRequestBody($request);
+        }
+
+        return $this->runController($request);
+    }
+
+    private function mergeRequestBody(Request $request)
+    {
+        $body = json_decode($request->getContent(), true);
+
+        if (is_array($body)) {
+            $request->request->add($body);
+        }
+
+        return $request;
+    }
+
+    private function runController(Request $request)
+    {
         $callable = $this->callable;
 
         try {

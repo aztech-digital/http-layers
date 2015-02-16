@@ -32,7 +32,7 @@ class ErrorHandlingLayer implements Layer, LoggerAwareInterface
         } catch (\Exception $ex) {
             $this->logger->error($ex);
 
-            return new Response($ex->getMessage(), 500);
+            throw new HttpException(500, 'Unhandled exception', $ex);
         }
     }
 }
