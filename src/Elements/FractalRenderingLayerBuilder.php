@@ -27,7 +27,7 @@ class FractalRenderingLayerBuilder implements LayerBuilder
     public function buildLayer(Layer $nextLayer, array $arguments)
     {
         $transformerClass = isset($arguments['class']) ? $arguments['class'] : '';
-        $isList = isset($arguments['isList']) && $arguments['isList'] == true;
+        $isList = isset($arguments['list']) && $arguments['list'] == true;
 
         if (trim($transformerClass) == '') {
             return $nextLayer;
