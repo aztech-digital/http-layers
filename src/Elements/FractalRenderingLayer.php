@@ -31,8 +31,7 @@ class FractalRenderingLayer implements Layer
         $this->transformer = $transformer;
 
         if (class_exists($this->transformer, true)) {
-            $transformerClass = $this->transformer;
-            $this->transformer = new $transformerClass();
+            $this->transformer = $container->resolve([ 'class' => $this->transformer ]);
         } else {
             $this->transformer = $container->resolve($this->transformer);
         }
