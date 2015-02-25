@@ -47,6 +47,10 @@ class FractalRenderingLayer implements Layer
         $controller = $this->controller;
         $data = $controller($request);
 
+        if ($data == null) {
+            return null;
+        }
+
         if ($this->isList) {
             $resource = new Collection(($data instanceof PaginatedResult) ? $data->getResults() : $data, $this->transformer);
 
