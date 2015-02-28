@@ -104,7 +104,7 @@ class SilexRouteBuilder
 
         return function (\Exception $exception, $code) use ($container, $errorCallback) {
             if ($errorCallback != null) {
-                $controller = $container->resolve($errorCallback);
+                $controller = $container->get($errorCallback);
 
                 return $controller(Request::createFromGlobals());
             }
