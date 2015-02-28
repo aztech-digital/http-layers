@@ -3,12 +3,11 @@
 namespace Aztech\Layers\Elements;
 
 use Aztech\Layers\Layer;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpKernel\Exception\HttpException;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
 use Psr\Log\NullLogger;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class ErrorHandlingLayer implements Layer, LoggerAwareInterface
 {

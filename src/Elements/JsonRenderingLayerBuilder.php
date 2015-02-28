@@ -2,8 +2,8 @@
 
 namespace Aztech\Layers\Elements;
 
-use Aztech\Layers\LayerBuilder;
 use Aztech\Layers\Layer;
+use Aztech\Layers\LayerBuilder;
 
 class JsonRenderingLayerBuilder implements LayerBuilder
 {

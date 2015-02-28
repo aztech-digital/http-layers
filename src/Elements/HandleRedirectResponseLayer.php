@@ -2,9 +2,9 @@
 
 namespace Aztech\Layers\Elements;
 
+use Aztech\Layers\Layer;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Aztech\Layers\Layer;
 
 class HandleRedirectResponseLayer implements Layer
 {

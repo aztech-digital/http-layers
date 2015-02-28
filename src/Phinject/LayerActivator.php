@@ -2,17 +2,17 @@
 
 namespace Aztech\Layers\Phinject;
 
-use Aztech\Phinject\Activator;
-use Aztech\Phinject\Container;
-use Aztech\Phinject\Util\ArrayResolver;
-use Aztech\Phinject\ConfigurationAware;
 use Aztech\Layers\LayeredControllerFactory;
-use Aztech\Layers\Elements\HttpLayerBuilder;
-use Aztech\Layers\Elements\HtmlRenderingLayer;
-use Aztech\Layers\Elements\HtmlRenderingLayerBuilder;
 use Aztech\Layers\Elements\FractalRenderingLayerBuilder;
+use Aztech\Layers\Elements\HtmlRenderingLayerBuilder;
+use Aztech\Layers\Elements\HttpLayerBuilder;
 use Aztech\Layers\Elements\JsonRenderingLayerBuilder;
 use Aztech\Layers\Elements\RedirectLayerBuilder;
+use Aztech\Phinject\Activator;
+use Aztech\Phinject\ConfigurationAware;
+use Aztech\Phinject\Container;
+use Aztech\Phinject\Util\ArrayResolver;
+use League\Fractal\Manager;
 
 class LayerActivator implements Activator, ConfigurationAware
 {
@@ -35,7 +35,7 @@ class LayerActivator implements Activator, ConfigurationAware
         $this->activatorKey = $this->config->resolve('key');
     }
 
-    /*
+    /**
      * (non-PHPdoc)
      * @see \Aztech\Phinject\Activator::createInstance()
      */
@@ -97,7 +97,7 @@ class LayerActivator implements Activator, ConfigurationAware
 
     private function initializeJson(Container $container)
     {
-        $manager = new \League\Fractal\Manager();
+        $manager = new Manager();
         $transformationEngine = null;
 
         if ($this->config->resolve('defaults.json.engine', null) == 'fractal') {

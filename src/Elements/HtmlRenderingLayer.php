@@ -2,10 +2,10 @@
 
 namespace Aztech\Layers\Elements;
 
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Aztech\Layers\Layer;
 use Aztech\Layers\LayerDataInflector;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class HtmlRenderingLayer implements Layer
 {

@@ -2,11 +2,10 @@
 
 namespace Aztech\Layers\Elements;
 
+use Aztech\Layers\Layer;
 use Aztech\Layers\LayerBuilder;
 use Aztech\Phinject\Container;
 use League\Fractal\Manager;
-use Symfony\Component\HttpFoundation\Request;
-use Aztech\Layers\Layer;
 
 class FractalRenderingLayerBuilder implements LayerBuilder
 {

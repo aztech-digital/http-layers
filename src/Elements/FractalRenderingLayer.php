@@ -2,15 +2,15 @@
 
 namespace Aztech\Layers\Elements;
 
+use Aztech\Layers\Layer;
 use Aztech\Layers\Pagination\PaginatedResult;
 use Aztech\Layers\Pagination\PaginatedResultAdapter;
 use Aztech\Phinject\Container;
 use League\Fractal\Manager;
+use League\Fractal\TransformerAbstract;
 use League\Fractal\Resource\Collection;
 use League\Fractal\Resource\Item;
 use Symfony\Component\HttpFoundation\Request;
-use Aztech\Layers\Layer;
-use League\Fractal\TransformerAbstract;
 
 class FractalRenderingLayer implements Layer
 {

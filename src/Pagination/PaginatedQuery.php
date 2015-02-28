@@ -9,11 +9,19 @@ class PaginatedQuery
 
     private $pageNumber;
 
+    /**
+     *
+     * @return int
+     */
     public function getItemsPerPage()
     {
         return $this->itemsPerPage;
     }
 
+    /**
+     *
+     * @return int
+     */
     public function getItemsOffset()
     {
         return max($this->itemsPerPage * ($this->pageNumber - 1), 0);
@@ -31,7 +39,7 @@ class PaginatedQuery
     /**
      * Returns the page number, starting at 1.
      *
-     * @return number
+     * @return int
      */
     public function getPageNumber()
     {
@@ -41,7 +49,7 @@ class PaginatedQuery
     /**
      * Set the page number, starting at 1.
      *
-     * @param unknown $number
+     * @param int $number
      */
     public function setPageNumber($number)
     {

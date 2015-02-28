@@ -2,8 +2,6 @@
 
 namespace Aztech\Layers\Phinject;
 
-use Aztech\Layers\Layer;
-use Aztech\Phinject\Injector;
 use Aztech\Phinject\ObjectContainer;
 use Aztech\Phinject\Util\ArrayResolver;
 use Silex\Application;
@@ -68,7 +66,7 @@ class SilexRouteBuilder
         $methods = array_values($serviceConfig->resolveArray('route.methods', [ 'get' ])->extract());
         $asserts = $serviceConfig->resolveArray('route.assert', [ ])->extract();
 
-        if (! $routePath || ! is_scalar($routePath))  {
+        if (! $routePath || ! is_scalar($routePath)) {
             return;
         }
 

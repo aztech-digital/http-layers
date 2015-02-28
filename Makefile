@@ -8,7 +8,11 @@ ifneq "$(SUPPORTS_MAKE_ARGS)" ""
     $(eval $(COMMAND_ARGS):;@:)
 endif
 
+ifeq "$(STRICT)" "1"
 test: phpunit phpcs bugfree phpmd
+else
+test: phpunit phpcs bugfree
+endif
 test-analysis: phpcs bugfree phpmd
 test-upload: scrutinizer
 

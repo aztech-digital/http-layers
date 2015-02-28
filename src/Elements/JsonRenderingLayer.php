@@ -2,11 +2,11 @@
 
 namespace Aztech\Layers\Elements;
 
+use Aztech\Layers\Layer;
 use Aztech\Layers\Responses\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\HttpException;
-use Aztech\Layers\Layer;
 
 class JsonRenderingLayer implements Layer
 {

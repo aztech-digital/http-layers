@@ -3,8 +3,8 @@
 namespace Aztech\Layers\Elements;
 
 use Aztech\Layers\Layer;
-use Symfony\Component\HttpFoundation\Request;
 use Negotiation\FormatNegotiator;
+use Symfony\Component\HttpFoundation\Request;
 
 class NegotiatedContentLayer implements Layer
 {

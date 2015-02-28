@@ -16,7 +16,8 @@ class SilexActivator implements Activator, ConfigurationAware
     /**
      * @see \Aztech\Phinject\ConfigurationAware::setConfiguration()
      */
-    public function setConfiguration(ArrayResolver $configurationNode) {
+    public function setConfiguration(ArrayResolver $configurationNode)
+    {
         $this->activatorKey = $configurationNode->resolve('key');
     }
 
