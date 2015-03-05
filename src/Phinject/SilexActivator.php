@@ -31,6 +31,10 @@ class SilexActivator implements Activator, ConfigurationAware
         $silex = new Application($nodeConfig->extract());
 
         foreach ($serviceConfig->resolveArray('providers', []) as $provider => $values) {
+            if (! class_exists($provider, true)) {
+                throw new \RuntimeException('Invalid provider: ' . $provider);
+            }
+
             $silex->register(new $provider(), $values->extract());
         }
 
