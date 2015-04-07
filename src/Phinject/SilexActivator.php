@@ -26,9 +26,15 @@ class SilexActivator implements Activator, ConfigurationAware
      */
     public function createInstance(Container $container, ArrayResolver $serviceConfig, $serviceName)
     {
-        $nodeConfig = $serviceConfig->resolve($this->activatorKey);
+        $nodeConfig = $serviceConfig
+            ->resolve($this->activatorKey)
+            ->extract();
 
-        $silex = new Application($nodeConfig->extract());
+        foreach ($nodeConfig as & $value) {
+            $value = $container->resolve($value);
+        }
+
+        $silex = new Application($nodeConfig);
 
         foreach ($serviceConfig->resolveArray('providers', []) as $provider => $values) {
             if (! class_exists($provider, true)) {
